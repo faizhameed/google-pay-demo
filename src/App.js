@@ -1,23 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import { useRef } from "react";
+import "./App.css";
+import PaymentPage from "./PaymentPage";
 
 function App() {
+  const amountInput = useRef();
+  const onChange = () => {
+    console.log(amountInput.current.value);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <header className="App-header">Google Pay App</header>
+      <input type="number" ref={amountInput} onChange={onChange} />
+      <PaymentPage amount={amountInput.current?.value || 0} />
     </div>
   );
 }
